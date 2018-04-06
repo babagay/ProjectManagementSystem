@@ -28,8 +28,9 @@ public class App {
     public App()
     {
         try {
-            bootstrap();
+           // bootstrap();
            // boot();
+            boot5();
         } catch ( Throwable e ) {
             e.printStackTrace();
         }
@@ -55,6 +56,28 @@ public class App {
 //        System.out.println(result);
     }
 
+    /**
+     * v5
+     */
+    Session boot5()
+    {
+
+        if ( sessionFactory == null ) {
+            final Configuration configuration = new Configuration();
+            //            configuration.addAnnotatedClass( User.class );
+            //            configuration.addAnnotatedClass( Tool.class );
+            //            configuration.addAnnotatedClass( Skill.class );
+
+            sessionFactory = configuration.buildSessionFactory( new StandardServiceRegistryBuilder().build() );
+        }
+        return sessionFactory.openSession();
+
+    }
+
+
+    /**
+     * v4
+     */
     void boot4()
     {
         SessionFactory fa = new Configuration().configure().buildSessionFactory();
